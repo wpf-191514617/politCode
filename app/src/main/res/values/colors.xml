@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1f74d5</color>
+    <color name="colorPrimaryDark">#1f74d5</color>
+    <color name="colorAccent">#1f74d5</color>
+    <color name="black">#000000</color>
+    <color name="sr_window_background">#FFFEFEFE</color>
+    <color name="gray66">#666666</color>
+    <color name="white">#ffffff</color>
+    <color name="gray33">#333333</color>
+    <color name="layout_bg">#F5F5F5</color>
+    <color name="gray_ee">#eeeeee</color>
+    <color name="gray99">#999999</color>
+
+    <color name="orange">#ff8000</color>
+
+    <color name="divider_color">#c9c9c9</color>
+
+</resources>

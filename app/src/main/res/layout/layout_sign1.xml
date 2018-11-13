@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/dimen_20dp"
+        android:paddingLeft="@dimen/dimen_15dp"
+        android:paddingRight="@dimen/dimen_15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_20"
+            android:textColor="@color/gray33"
+            android:layout_marginBottom="@dimen/dimen_18dp"
+            android:text="个人简介"/>
+
+
+        <include layout="@layout/line"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="-25dp"
+            android:paddingRight="@dimen/dimen_5dp">
+
+            <com.zodiac.polit.widget.InputLayout
+                android:id="@+id/inputRealName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                app:title="真实姓名:"
+                ></com.zodiac.polit.widget.InputLayout>
+
+
+            <com.zodiac.polit.widget.InputLayout
+                android:id="@+id/inputID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                app:isIdCard="true"
+                app:title="身份证号:"
+                app:editble="false"/>
+            <com.zodiac.polit.widget.InputLayout
+                android:id="@+id/inputPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                app:isMobile="true"
+                app:title="手机号:"/>
+
+            <com.zodiac.polit.widget.InputLayout
+                android:id="@+id/inputBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                app:title="出生日期:"
+                app:editble="false"
+                app:eidtHnit="请选择出生日期"/>
+
+
+            <com.zodiac.polit.widget.InputLayout
+                android:id="@+id/inputSex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                app:editble="false"
+                app:eidtHnit="请选择性别"
+                app:title="性别:"/>
+            <com.zodiac.polit.widget.InputLayout
+                android:id="@+id/inputNation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                app:editble="false"
+                app:eidtHnit="请选择民族"
+                app:title="民族:"/>
+
+            <com.zodiac.polit.widget.InputLayout
+                android:id="@+id/inputPolitical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                app:editble="false"
+                app:eidtHnit="请选择政治面貌"
+                app:title="政治面貌:"/>
+
+            <com.zodiac.polit.widget.InputLayout
+                android:id="@+id/inputHousehold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                app:editble="false"
+                app:eidtHnit="请选择户口类型"
+                app:title="户口类型:"/>
+
+            <com.zodiac.polit.widget.InputLayout
+                android:id="@+id/inputChild"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                app:editble="false"
+                app:eidtHnit="请选择是否独生子女"
+                app:title="独生子女:"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

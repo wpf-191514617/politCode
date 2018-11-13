@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RowView">
+        <attr name="icon" format="reference" />
+        <attr name="lable" format="string" />
+        <attr name="nextIcon" format="reference" />
+        <attr name="paddingLeft" format="dimension" />
+        <attr name="lableSize" format="dimension" />
+        <attr name="lableMargin" format="dimension" />
+        <attr name="valueText" format="string" />
+        <attr name="valueTextColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="InputLayout">
+        <attr name="eidtHnit" format="string"/>
+        <attr name="title" format="string"/>
+        <attr name="editble" format="boolean"/>
+        <attr name="isMobile" format="boolean"/>
+        <attr name="isIdCard" format="boolean"/>
+        <attr name="text" format="string"/>
+        <attr name="isMust" format="boolean"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="WelcomePageLayout_LayoutParams">
+        <attr name="view_behavior" format="string"/>
+        <attr name="destiny" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="WelcomeCoordinatorLayout">
+        <attr name="indicatorUnselected" format="color"/>
+        <attr name="indicatorSelected" format="color"/>
+        <attr name="showIndicators" format="boolean"/>
+        <attr name="scrollingEnabled" format="boolean" />
+    </declare-styleable>
+
+    
+</resources>

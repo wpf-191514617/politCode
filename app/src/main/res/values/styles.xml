@@ -1,0 +1,51 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <!--<item name="android:windowContentOverlay">@android:color/transparent</item>-->
+        <item name="android:windowBackground">@color/sr_window_background</item>
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="popupMenuStyle">@style/popMenu_style</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+    <style name="popMenu_style" parent="@android:style/Widget.PopupMenu">
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="tvWrapContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="tvGray33" parent="tvWrapContent">
+        <item name="android:textColor">@color/gray33</item>
+    </style>
+
+    <style name="tvGray33.16" parent="@style/tvGray33">
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+    
+    <style name="tvGray66" parent="@style/tvWrapContent">
+        <item name="android:textColor">@color/gray66</item>
+    </style>
+
+    <style name="tvGray66.16" parent="@style/tvGray66">
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="StartTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+</resources>

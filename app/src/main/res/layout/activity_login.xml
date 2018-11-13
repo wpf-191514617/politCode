@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/layout_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/dimen_30dp"
+        android:paddingTop="@dimen/dimen_96dp"
+        android:orientation="vertical">
+
+        <com.zodiac.polit.widget.InputLayout
+            android:id="@+id/inputPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isIdCard="true"
+            app:title="用户名："
+            app:eidtHnit="请输入手机号码或身份证号码"/>
+
+        <com.zodiac.polit.widget.InputLayout
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            app:title="密码："
+            app:eidtHnit="请输入登录密码"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40dp"
+        android:background="@drawable/bg_btn_blue"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16"
+        android:text="登录"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginLeft="@dimen/dimen_60dp"
+        android:layout_marginRight="@dimen/dimen_50dp"
+        android:layout_marginTop="@dimen/dimen_46dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right">
+
+        <TextView
+            android:id="@+id/tvForget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/orange"
+            android:text="忘记密码?"
+            android:paddingTop="@dimen/dimen_8dp"
+            android:paddingRight="@dimen/dimen_50dp"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_24dp"
+        android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_16"
+        android:textColor="@color/gray66"
+        android:text="没有账号？"
+        />
+
+        <TextView
+            android:id="@+id/tvRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/orange"
+            android:text="立即注册"
+            />
+    </LinearLayout>
+
+</LinearLayout>

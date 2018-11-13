@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/layoutItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dimen_12dp"
+        android:paddingRight="@dimen/dimen_18dp"
+        android:paddingTop="@dimen/dimen_15dp">
+
+        <ImageView
+            android:id="@+id/ivNews"
+            android:layout_width="@dimen/dimen_120dp"
+            android:layout_height="@dimen/dimen_84dp"
+            android:layout_marginRight="@dimen/dimen_12dp"
+            android:scaleType="centerCrop" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_3dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="解读空军青少年航空学校五大惠生政策"
+                android:textColor="@color/gray33"
+                android:textSize="@dimen/sp_14" />
+
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_6dp"
+                android:text="2018-09-12"
+                android:textColor="@color/gray99"
+                android:textSize="@dimen/sp_10" />
+
+
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_6dp"
+                android:ellipsize="end"
+                android:lineSpacingExtra="@dimen/dimen_3dp"
+                android:maxLines="2"
+                android:text="近日，教育部、公安部和解放军总政治部制定印发《空军青"
+                android:textColor="@color/gray66"
+                android:textSize="@dimen/sp_12" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

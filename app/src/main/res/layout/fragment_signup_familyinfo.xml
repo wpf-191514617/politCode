@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dimen_15dp"
+    android:paddingRight="@dimen/dimen_15dp"
+    android:paddingTop="@dimen/dimen_20dp">
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_18dp"
+        android:text="家庭信息"
+        android:textColor="@color/gray33"
+        android:textSize="@dimen/sp_20" />
+
+    <include layout="@layout/line" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="-25dp"
+        android:paddingRight="@dimen/dimen_5dp">
+
+
+    <com.zodiac.polit.widget.InputLayout
+        android:id="@+id/inputProvice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:title="家庭地址:"
+        app:editble="false"
+        app:eidtHnit="请选择省份"></com.zodiac.polit.widget.InputLayout>
+
+    <com.zodiac.polit.widget.InputLayout
+        android:id="@+id/inputCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:title=""
+        app:editble="false"
+        app:eidtHnit="请选择城市"></com.zodiac.polit.widget.InputLayout>
+
+    <com.zodiac.polit.widget.InputLayout
+        android:id="@+id/inputArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:title=""
+        app:editble="false"
+        app:eidtHnit="请选择区县"></com.zodiac.polit.widget.InputLayout>
+
+
+    <com.zodiac.polit.widget.InputLayout
+        android:id="@+id/inputAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:title="详细地址:"></com.zodiac.polit.widget.InputLayout>
+
+    <com.zodiac.polit.widget.InputLayout
+        android:id="@+id/inputFatherName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:isMust="false"
+        app:eidtHnit="请输入父亲姓名"
+        app:title="父亲姓名:"></com.zodiac.polit.widget.InputLayout>
+
+    <com.zodiac.polit.widget.InputLayout
+        android:id="@+id/inputFatherPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:isMobile="true"
+        app:isMust="false"
+        app:eidtHnit="请输入父亲联系电话"></com.zodiac.polit.widget.InputLayout>
+
+    <com.zodiac.polit.widget.InputLayout
+        android:id="@+id/inputMotherName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:eidtHnit="请输入母亲联系电话"
+        app:isMust="false"
+        app:title="母亲姓名:"></com.zodiac.polit.widget.InputLayout>
+
+    <com.zodiac.polit.widget.InputLayout
+        android:id="@+id/inputMotherPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:isMobile="true"
+        app:isMust="false"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:eidtHnit="请输入母亲联系电话"></com.zodiac.polit.widget.InputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40dp"
+        android:layout_marginTop="@dimen/dimen_36dp"
+        android:layout_marginBottom="@dimen/dimen_30dp"
+        android:layout_marginLeft="@dimen/dimen_50dp"
+        android:layout_marginRight="@dimen/dimen_50dp"
+        android:background="@drawable/bg_btn_blue"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16"/>
+    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

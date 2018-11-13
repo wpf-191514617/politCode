@@ -1,0 +1,311 @@
+package com.zodiac.polit.ui.fragment.home;
+
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.minilive.library.adapter.BaseViewHolderHelper;
+import com.minilive.library.adapter.recycler.BaseRecyclerAdapter;
+import com.minilive.library.adapter.recycler.widget.RecyclerDivider;
+import com.minilive.library.entity.EventData;
+import com.minilive.library.network.callback.StringCallback;
+import com.minilive.library.util.StringUtils;
+import com.minilive.library.util.Trace;
+import com.minilive.library.widget.MyAdGallery;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.sendtion.xrichtext.RichTextView;
+import com.zodiac.polit.Constant;
+import com.zodiac.polit.R;
+import com.zodiac.polit.bean.response.ArticleResponse;
+import com.zodiac.polit.bean.response.BannerResponse;
+import com.zodiac.polit.http.provider.HomeProvider;
+import com.zodiac.polit.ui.WebActivity;
+import com.zodiac.polit.ui.activity.NewsDetailActivity;
+import com.zodiac.polit.ui.fragment.BaseRecyclerFragment;
+import com.zodiac.polit.ui.fragment.PolicyChildFragment;
+import com.zodiac.polit.util.HtmlUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.Call;
+import rx.Observable;
+import rx.Observer;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
+/**
+ * Created by john on 2018/9/22.
+ */
+
+public class HomeChildFragment extends BaseRecyclerFragment {
+
+    private HomeAdapter mHomeAdapter;
+
+    private List<ArticleResponse.PageBean.ListBean> mList = new ArrayList<>();
+
+    private  List<BannerResponse> mBannerResponse;
+
+    @Override
+    protected void initLayoutManager() {
+        super.initLayoutManager();
+        recyclerView.addItemDecoration(RecyclerDivider.newShapeDivider());
+    }
+
+    @Override
+    protected BaseRecyclerAdapter getAdapter() {
+        mHomeAdapter = new HomeAdapter(recyclerView);
+        return mHomeAdapter;
+    }
+
+    @Override
+    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+        super.onRefresh(refreshLayout);
+        mCurrentPage = 1;
+        refreshLayout.setEnableLoadMore(true);
+        loadBanner();
+    }
+
+    @Override
+    protected boolean isRegisterEventBus() {
+        return true;
+    }
+
+    @Override
+    protected void onEventComming(EventData eventData) {
+        super.onEventComming(eventData);
+        if (eventData.getCODE() == Constant.CODE_CITY1){
+            onRefresh(refreshLayout);
+        }
+    }
+
+    private void loadBanner() {
+        HomeProvider.loadBanner(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                Trace.d("banner","res------" + response);
+                mBannerResponse = new Gson().fromJson(response, new TypeToken<List<BannerResponse>>() {
+                }.getType());
+                loadData();
+            }
+        });
+    }
+
+    @Override
+    protected void loadData() {
+        HomeProvider.loadHomeNewsData(mCurrentPage, new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                refreshLayout.finishRefresh();
+                refreshLayout.finishLoadMore();
+                showToast(e.getMessage());
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                refreshLayout.finishRefresh();
+                refreshLayout.finishLoadMore();
+                ArticleResponse mArticleResponse = new Gson().fromJson(response, ArticleResponse.class);
+                if (mArticleResponse == null){
+                    showToast("暂无数据");
+                    return;
+                }
+
+                if (mArticleResponse.getList().size() < HomeProvider.LIMIT){
+                    refreshLayout.setEnableLoadMore(false);
+                }
+
+                if (mCurrentPage == 1){
+                    mList.clear();
+                }
+                mList.addAll(mArticleResponse.getPage().getList());
+                if (mCurrentPage == 1){
+                    mAdapter.setData(mArticleResponse.getList());
+                } else {
+                    mAdapter.addMoreData(mArticleResponse.getList());
+                }
+            }
+        });
+    }
+
+
+    class HomeAdapter extends BaseRecyclerAdapter<ArticleResponse.ListBeanX> {
+
+        private int mItemSize;
+
+        public HomeAdapter(RecyclerView recyclerView) {
+            super(recyclerView);
+            mItemSize = getResources().getDimensionPixelSize(R.dimen.dimen_70dp);
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            if (position == 0){
+                return R.layout.item_banner;
+            } else {
+                return R.layout.item_policy;
+           }
+        }
+
+        @Override
+        protected void fillData(BaseViewHolderHelper helper, int position, final ArticleResponse.ListBeanX model) {
+            if (position == 0)
+            setBanner(helper.getConvertView());
+            else{
+                final ArticleResponse.PageBean.ListBean listBean = mList.get(position-1);
+                ImageView imageView = helper.getImageView(R.id.ivNews);
+                final TextView tvContent = helper.getView(R.id.tvContent);
+                if (StringUtils.isEmpty(listBean.getImageSrc())){
+                    imageView.setVisibility(View.GONE);
+                } else {
+                    imageView.setVisibility(View.VISIBLE);
+                    Glide.with(HomeChildFragment.this).load(Constant.BASEURL + listBean.getImageSrc())
+                            .into(imageView);
+                }
+
+                helper.setText(R.id.tvTitle , listBean.getTitle())
+                        .setText(R.id.tvTime , listBean.getCreateDate());
+
+                helper.getConvertView().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        /*Bundle bundle = new Bundle();
+                        bundle.putString(NewsDetailActivity.KEY_CATEGORY , listBean.getCategory().getId());
+                        bundle.putString(NewsDetailActivity.KEY_CONTENT , listBean.getId());
+                        jumpTo(NewsDetailActivity.class , bundle);*/
+                        Bundle bundle = new Bundle();
+                        bundle.putString(WebActivity.KEY_WEB_URL , HtmlUtil.getDetailUrl(listBean.getId() , listBean.getCategory().getId()));
+                        jumpTo(WebActivity.class , bundle);
+                    }
+                });
+                String content = HtmlUtil.getHtmlText(model.getContent());
+                setText(tvContent , content);
+
+                LinearLayout linearLayout = helper.getView(R.id.layoutItem);
+
+                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) linearLayout.getLayoutParams();
+                if (StringUtils.isEmpty(content)){
+                    layoutParams.height = mItemSize;
+                } else {
+                    layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                }
+                linearLayout.setLayoutParams(layoutParams);
+                /*tvContent.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvContent.setText("");
+                        showDataSync(model.getContent(), tvContent);
+                    }
+                });*/
+
+          }
+        }
+
+        private Subscription subsLoading;
+
+
+        private void showDataSync(final String content , final TextView tvContent) {
+            subsLoading = Observable.create(new Observable.OnSubscribe<String>() {
+                @Override
+                public void call(Subscriber<? super String> subscriber) {
+                    showEditData(subscriber, content);
+                }
+            })
+                    .onBackpressureBuffer()
+                    .subscribeOn(Schedulers.io())//生产事件在io
+                    .observeOn(AndroidSchedulers.mainThread())//消费事件在UI线程
+                    .subscribe(new Observer<String>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                            showToast("解析错误：图片不存在或已损坏");
+                        }
+
+                        @Override
+                        public void onNext(String text) {
+                            if (text.contains("<img") && text.contains("src=")) {
+                                //imagePath可能是本地路径，也可能是网络地址
+                                /*String imagePath = HtmlUtil.getImgSrc(text);
+                                tvContent.addImageViewAtIndex(tvContent.getLastIndex(), Constant.BASEURL + imagePath);*/
+                            } else {
+                                tvContent.setText(Html.fromHtml(text));
+                            }
+                        }
+                    });
+
+        }
+
+        private void showEditData(Subscriber<? super String> subscriber, String html) {
+            try {
+                List<String> textList = HtmlUtil.cutStringByImgTag(html);
+                for (int i = 0; i < textList.size(); i++) {
+                    String text = textList.get(i);
+                    subscriber.onNext(text);
+                }
+                subscriber.onCompleted();
+            } catch (Exception e){
+                e.printStackTrace();
+                subscriber.onError(e);
+            }
+        }
+
+
+        private void setBanner(View convertView) {
+            if(mBannerResponse == null){
+                return;
+            }
+            MyAdGallery adGallery = convertView.findViewById(R.id.adGallery);
+            LinearLayout layoutPoint = convertView.findViewById(R.id.layoutPoint);
+            final TextView tvAdTitle = convertView.findViewById(R.id.tvAdTitle);
+
+            ArrayList<String> imgs = new ArrayList<>();
+            for (BannerResponse response : mBannerResponse) {
+                imgs.add(Constant.BASEURL + response.getFilesSrc());
+            }
+
+            adGallery.start(getActivity(), imgs, new int[imgs.size()], 2000, layoutPoint, R.drawable
+                    .dot_focused, R.drawable.dot_normal, false);
+
+            adGallery.setOnSelectedListener(new MyAdGallery.OnItemSelectedListener() {
+                @Override
+
+                public void onSelectedItem(int position) {
+                    tvAdTitle.setText(mBannerResponse.get(position).getTitle());
+                }
+            });
+
+            adGallery.setMyOnItemClickListener(new MyAdGallery.MyOnItemClickListener() {
+                @Override
+                public void onItemClick(int curIndex) {
+                    BannerResponse bannerResponse = mBannerResponse.get(curIndex);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(WebActivity.KEY_WEB_URL , HtmlUtil.MOBILE + bannerResponse.getLink());
+                    jumpTo(WebActivity.class , bundle);
+                }
+            });
+
+        }
+    }
+
+
+}

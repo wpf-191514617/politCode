@@ -1,0 +1,62 @@
+package com.minilive.library.compress;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class CompressWay {
+
+    //计算图片的缩放值
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+            final int heightRatio = Math.round((float) height / (float) reqHeight);
+            final int widthRatio = Math.round((float) width / (float) reqWidth);
+            inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+        }
+        return inSampleSize;
+    }
+
+    // 根据路径获得图片并压缩，返回bitmap用于显示
+    public static Bitmap getSmallBitmap(String filePath) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        //inJustDecodeBounds设置为true，可以不把图片读到内存中,但依然可以计算出图片的大小
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(filePath, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, 720, 1280);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+
+        return BitmapFactory.decodeFile(filePath, options);
+    }
+
+    //把bitmap转换成String
+    public static void bitmapToString(String filePath, int quality, String newPath) {
+        try {
+            Bitmap bm = getSmallBitmap(filePath);
+            File file = new File(newPath);
+            FileOutputStream out = null;
+            out = new FileOutputStream(file);
+            bm.compress(Bitmap.CompressFormat.JPEG, quality, out);
+            try {
+                out.flush();
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+}

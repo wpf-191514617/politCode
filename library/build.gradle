@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            jniLibs.srcDirs = ['libs']
+            jni.srcDirs = ['src/main/jni']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+/*    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.com.yidi.minilive.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.com.yidi.minilive.test.espresso:espresso-core:3.0.1'*/
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    api 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    //高斯模糊
+    api 'de.greenrobot:eventbus:3.0.0-beta1'
+    api 'com.google.code.gson:gson:2.8.2'
+    api 'jp.wasabeef:glide-transformations:3.3.0'
+
+}
+

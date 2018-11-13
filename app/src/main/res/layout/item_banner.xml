@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_179dp">
+
+    <com.minilive.library.widget.MyAdGallery
+        android:id="@+id/adGallery"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.minilive.library.widget.MyAdGallery>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="@dimen/dimen_7dp"
+        android:paddingBottom="@dimen/dimen_7dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dimen_12dp"
+        android:gravity="center_vertical"
+        android:paddingRight="@dimen/dimen_20dp"
+        android:background="#7F000000">
+
+
+        <TextView
+            android:id="@+id/tvAdTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/white"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+            <LinearLayout
+                android:id="@+id/layoutPoint"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_12dp"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

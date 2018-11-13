@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/layout_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dimen_40dp"
+        android:paddingRight="@dimen/dimen_50dp"
+        android:paddingTop="@dimen/dimen_96dp"
+        android:orientation="vertical">
+
+        <com.zodiac.polit.widget.InputLayout
+            android:id="@+id/inputName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="姓名："
+            app:eidtHnit="请输入真实姓名"/>
+
+        <com.zodiac.polit.widget.InputLayout
+            android:id="@+id/inputPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_18dp"
+            app:isMobile="true"
+            app:title="手机号："
+            app:eidtHnit="请输入手机号码"/>
+
+        <com.zodiac.polit.widget.InputLayout
+            android:id="@+id/inputID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_18dp"
+            app:isIdCard="true"
+            app:title="身份证号："
+            app:isMust="false"
+            app:eidtHnit="请输入身份证号码"/>
+
+        <com.zodiac.polit.widget.InputLayout
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_18dp"
+            app:title="密码："
+            app:eidtHnit="请输入登录密码"/>
+
+        <com.zodiac.polit.widget.InputLayout
+            android:id="@+id/inputPassword1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_18dp"
+            app:title="确认密码："
+            app:eidtHnit="请输入确认密码"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40dp"
+        android:background="@drawable/bg_btn_blue"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16"
+        android:text="注册"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginLeft="@dimen/dimen_50dp"
+        android:layout_marginRight="@dimen/dimen_50dp"
+        android:layout_marginTop="@dimen/dimen_46dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_24dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/gray66"
+            android:text="已有账号？"
+            />
+
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/orange"
+            android:text="去登录"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

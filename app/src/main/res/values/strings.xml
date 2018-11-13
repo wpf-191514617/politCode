@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">中国招飞网</string>
+    <string name="no_data">暂无数据</string>
+    <string name="tab_home">首页</string>
+    <string name="policy">政策</string>
+    <string name="mine">我的</string>
+    <string name="signup">报名</string>
+    <string name="question">问题</string>
+    <string name="edit">编辑</string>
+    <string name="query">查询</string>
+
+    <string-array name="yes_or_no">
+        <item>是</item>
+        <item>否</item>
+    </string-array>
+
+    <string-array name="sex">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+
+</resources>

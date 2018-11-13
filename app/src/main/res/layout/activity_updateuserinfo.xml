@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+
+    <include layout="@layout/layout_head_mine" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="-10dp"
+        android:paddingRight="@dimen/dimen_16dp"
+        android:paddingTop="@dimen/dimen_28dp">
+
+        <com.zodiac.polit.widget.InputLayout
+            android:id="@+id/inputRealName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:eidtHnit="请输入真实姓名"
+            app:title="真实姓名：" />
+
+        <com.zodiac.polit.widget.InputLayout
+            android:id="@+id/inputPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15dp"
+            app:isMobile="true"
+            app:eidtHnit="请输入手机号"
+            app:title="手机号：" />
+
+        <com.zodiac.polit.widget.InputLayout
+            android:id="@+id/inputIDCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15dp"
+            app:editble="false"
+            app:isMust="false"
+            app:eidtHnit="请输入身份证号"
+            app:title="身份证号：" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40dp"
+        android:layout_marginTop="@dimen/dimen_36dp"
+        android:layout_marginBottom="@dimen/dimen_30dp"
+        android:layout_marginLeft="@dimen/dimen_50dp"
+        android:layout_marginRight="@dimen/dimen_50dp"
+        android:background="@drawable/bg_btn_blue"
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16"/>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_60dp"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/dimen_20dp"
+    android:gravity="center_vertical"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/ivRowIcon"
+        android:layout_width="@dimen/dimen_20dp"
+        android:layout_height="@dimen/dimen_20dp"
+        />
+
+    <TextView
+        android:id="@+id/tvRowLable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_16"
+        android:layout_marginLeft="@dimen/dimen_13dp"
+        android:textColor="@color/gray33"/>
+
+    <LinearLayout
+
+        android:layout_width="@dimen/dimen_150dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="right|center_vertical"
+        android:layout_marginRight="@dimen/dimen_14dp"
+        android:layout_marginLeft="@dimen/dimen_20dp">
+
+        <LinearLayout
+            android:id="@+id/layoutView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/dimen_12dp"></LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/gray99"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civPhoto"
+            android:layout_width="@dimen/dimen_32dp"
+            android:layout_height="@dimen/dimen_32dp"
+            android:visibility="gone"/>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivNext"
+        android:layout_width="@dimen/dimen_12dp"
+        android:layout_height="@dimen/dimen_18dp"
+        android:layout_marginRight="@dimen/dimen_13dp"/>
+
+</LinearLayout>
